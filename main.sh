@@ -254,6 +254,7 @@ SKIPPED_TAGS="$SKIP_TF|$SKIP_MINOR_OS|$SKIP_NODE|$SKIP_DOCKER|$SKIP_MINIO|$SKIP_
 CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 
+SKIPPED_TAGS="$SKIPPED_TAGS|:1\.[2-4](-wheezy|-alpine|$|\.)|cross"
 
 default_images="
 library/golang
@@ -282,12 +283,10 @@ BATCHED_IMAGES="\
 library/golang/latest\
  library/golang/alpine\
  library/golang/buster\
- library/golang/cross\
  library/golang/jessie\
  library/golang/stretch\
  library/golang/1-alpine\
  library/golang/1-buster\
- library/golang/1-cross\
  library/golang/1-jessie\
  library/golang/1-stretch\
  library/golang/1-wheezy\
@@ -583,7 +582,9 @@ do_refresh_images() {
     while read images;do
         for image in $images;do
             if [[ -n $image ]];then
-                make_tags $image
+                if [[ -z "${SKIP_MAKE_TAGS-}" ]];then
+                    make_tags $image
+                fi
                 do_clean_tags $image
             fi
         done
