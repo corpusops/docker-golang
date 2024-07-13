@@ -4,22 +4,17 @@
 1-buster
 1-jessie
 1-stretch
-1-wheezy
 1.5
 1.5-alpine
-1.5-wheezy
 1.6
 1.6-alpine
-1.6-wheezy
 1.7
 1.7-alpine
 1.7-jessie
-1.7-wheezy
 1.8
 1.8-alpine
 1.8-jessie
 1.8-stretch
-1.8-wheezy
 1.9
 1.9-alpine
 1.9-stretch
@@ -71,4 +66,3 @@ buster
 jessie
 latest
 stretch
-wheezy
