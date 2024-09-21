@@ -65,21 +65,14 @@ jobs:
       fail-fast: false
       matrix:
         IMAGES:
-        - "library/golang/latest library/golang/alpine library/golang/buster library/golang/jessie library/golang/stretch library/golang/1-alpine library/golang/1-buster"
-        - "library/golang/1-jessie library/golang/1-stretch library/golang/1"
+        - "library/golang/1-alpine library/golang/1 library/golang/1.19 library/golang/1.19-alpine"
+        - "library/golang/alpine library/golang/latest"
         #- "corpusops/test/a corpusops/test/b corpusops/test/c"
         # all images that werent explicitly told to be built would be built in the next batches
         # we span them onto N jobs
-        - "zleftover:1/10"
-        - "zleftover:2/10"
-        - "zleftover:3/10"
-        - "zleftover:4/10"
-        - "zleftover:5/10"
-        - "zleftover:6/10"
-        - "zleftover:7/10"
-        - "zleftover:8/10"
-        - "zleftover:9/10"
-        - "zleftover:10/10"
+        - "zleftover:1/2"
+        - "zleftover:2/2"
+
 on:
   push:
   workflow_dispatch:
